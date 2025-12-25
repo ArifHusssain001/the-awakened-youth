@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - The Awakened Youth</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <style>
+        .auth-container {
+            max-width: 450px;
+            margin: 50px auto;
+            background: #FFFFFF;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 2px solid #E6E6FF;
+        }
+        
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .auth-header h2 {
+            color: #330066;
+            margin-bottom: 10px;
+        }
+        
+        .auth-header p {
+            color: #666666;
+        }
+        
+        .auth-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .auth-form label {
+            display: block;
+            color: #330066;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .auth-form input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E6E6FF;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .auth-form input:focus {
+            outline: none;
+            border-color: #663399;
+        }
+        
+        .auth-btn {
+            width: 100%;
+            background: #663399;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .auth-btn:hover {
+            background: #330066;
+        }
+        
+        .auth-links {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #E6E6FF;
+        }
+        
+        .auth-links a {
+            color: #663399;
+            text-decoration: none;
+        }
+        
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #ffcdd2;
+        }
+        
+        .success-message {
+            background: #e8f5e8;
+            color: #2e7d32;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #c8e6c9;
+        }
+        
+        .info-box {
+            background: #F5F0FF;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #E6E6FF;
+        }
+        
+        .info-box h4 {
+            color: #330066;
+            margin-bottom: 10px;
+        }
+        
+        .info-box ul {
+            color: #666666;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <img src="images/logo.png" alt="The Awakened Youth logo" class="site-logo">
+                    <h1 class="site-title">The Awakened Youth</h1>
+                </div>
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" class="search-input" placeholder="Search columns, content..." id="searchInput">
+                        <button class="search-btn" onclick="performSearch()" type="button">
+                            <svg class="search-icon" viewBox="0 0 24 24">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            </svg>
+                        </button>
+                        <div class="search-results" id="searchResults"></div>
+                    </div>
+                </div>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" type="button" title="Toggle light / dark">🌙</button>
+            </div>
+            <nav class="navigation">
+                <ul class="main-nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="columns.html">Columns</a></li>
+                    <li><a href="contact.html">Contact Me</a></li>
+                    <li><a href="feedback.html">Feedback & Questions</a></li>
+                    <li id="authLinks">
+                        <a href="login.html" style="color: #663399; margin-right: 15px;">Login</a>
+                        <a href="register.html" style="background: #663399; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">Register</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h2 class="page-title">Join Our Community</h2>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="auth-container">
+                    <div class="auth-header">
+                        <h2>Register as a Writer</h2>
+                        <p>Join our community and share your Islamic insights</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>As a Contributor, you can:</h4>
+                        <ul>
+                            <li>Write and submit columns for review</li>
+                            <li>Access your personal dashboard</li>
+                            <li>Track your submission status</li>
+                            <li>Edit your drafts before submission</li>
+                        </ul>
+                        <p style="margin-top: 10px; font-style: italic; color: #663399;">
+                            <strong>Note:</strong> All submissions require admin approval before publication.
+                        </p>
+                    </div>
+
+                    <div id="messageContainer"></div>
+
+                    <form class="auth-form" id="registerForm">
+                        <div class="form-group">
+                            <label for="name">Full Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required minlength="6">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password:</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+
+                        <button type="submit" class="auth-btn">Register as Writer</button>
+                    </form>
+
+                    <div class="auth-links">
+                        <p>Already have an account? <a href="login.html">Login here</a></p>
+                        <p><a href="index.html">← Back to Home</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- legacy footer removed; site-wide footer injected by js/footer.js -->
+
+    <script defer src="js/theme.js"></script>
+    <script defer src="js/notifications.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/features.js"></script>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const messageContainer = document.getElementById('messageContainer');
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            // Clear previous messages
+            messageContainer.innerHTML = '';
+            
+            // Validation
+            if (password !== confirmPassword) {
+                messageContainer.innerHTML = '<div class="error-message">Passwords do not match.</div>';
+                return;
+            }
+            
+            if (password.length < 6) {
+                messageContainer.innerHTML = '<div class="error-message">Password must be at least 6 characters long.</div>';
+                return;
+            }
+            
+            try {
+                const user = authSystem.register({
+                    name: name,
+                    email: email,
+                    password: password
+                });
+                
+                messageContainer.innerHTML = `
+                    <div class="success-message">
+                        <strong>Registration Successful!</strong><br>
+                        Welcome ${user.name}! You can now <a href="login.html">login</a> and start writing columns.
+                        Your account has been created with contributor privileges.
+                    </div>
+                `;
+                
+                // Clear form
+                document.getElementById('registerForm').reset();
+                
+                // Auto redirect after 3 seconds
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 3000);
+                
+            } catch (error) {
+                messageContainer.innerHTML = `<div class="error-message">${error.message}</div>`;
+            }
+        });
+    </script>
+    <script defer src="js/footer.js"></script>
+</body>
+</html>

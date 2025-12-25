@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Awakened Youth - Awakening hearts, guiding youth through Islam</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="The Awakened Youth - Islamic columns, spiritual guidance, and thoughtful discourse for contemporary Muslim youth. Explore timeless wisdom and modern insights.">
+    <meta name="keywords" content="Islamic columns, Muslim youth, spiritual guidance, Islamic wisdom, contemporary Islam, faith, purpose, community">
+    <meta name="author" content="The Awakened Youth">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The Awakened Youth - Islamic Columns & Spiritual Guidance">
+    <meta property="og:description" content="Awakening hearts, guiding youth through Islam. Contemporary Islamic discourse and spiritual growth.">
+    <meta property="og:image" content="images/logo.png">
+    <meta property="og:url" content="https://theawakenedyouth.com">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Awakened Youth">
+    <meta name="twitter:description" content="Islamic columns and spiritual guidance for contemporary Muslim youth">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/logo.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Skip to Content for Accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    
+    <header class="header">
+        <div class="main-header-wrapper">
+            <a href="index.html" class="logo" title="The Awakened Youth - Home">
+                <img src="images/logo.png" alt="The Awakened Youth logo" class="site-logo">
+                <h1 class="site-title">The Awakened Youth</h1>
+            </a>
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Search columns, content..." id="searchInput">
+                    <button class="search-btn" onclick="performSearch()" type="button">
+                        <svg class="search-icon" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                    </button>
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+            </div>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" type="button" title="Toggle light / dark">🌙</button>
+            
+            <!-- Notification Bell -->
+            <div class="notification-container">
+                <button id="notificationsButton" class="notification-bell" aria-haspopup="true" aria-expanded="false" aria-label="Notifications">
+                    🔔
+                    <span id="notificationsBadge" class="notification-badge" style="display:none"></span>
+                </button>
+                <div id="notificationsDropdown" class="notifications-dropdown" role="region" aria-hidden="true">
+                    <div class="notifications-header">
+                        <strong>Notifications</strong>
+                        <div class="notifications-actions">
+                            <button id="markAllReadBtn" type="button">Mark all read</button>
+                        </div>
+                    </div>
+                    <ul id="notificationsList" class="notifications-list"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="main-nav-links-wrapper">
+            <nav class="navigation">
+                <ul class="main-nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="columns.html">Columns</a></li>
+                    <li><a href="contact.html">Contact Me</a></li>
+                    <li><a href="feedback.html">Feedback & Questions</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li id="authLinks">
+                        <a href="login.html" style="color: #663399; margin-right: 15px;">Login</a>
+                        <a href="register.html" style="background: #663399; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">Register</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero-banner">
+            <div class="container">
+                <h2 class="hero-title">The Awakened Youth</h2>
+                <p class="hero-subtitle">Awakening hearts, guiding youth, and finding purpose through Islam.</p>
+                
+                <!-- Centered Search Bar -->
+                <div class="hero-search-container">
+                    <div class="hero-search-bar">
+                        <input type="text" class="hero-search-input" placeholder="Search columns, Islamic guidance, Q&A..." id="heroSearchInput">
+                        <button class="hero-search-btn" onclick="performHeroSearch()" type="button">
+                            <svg class="hero-search-icon" viewBox="0 0 24 24">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            </svg>
+                        </button>
+                        <div class="hero-search-results" id="heroSearchResults"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="intro-section">
+            <div class="container">
+                <p class="intro-text">
+                    Welcome to a space dedicated to Islamic reflection and spiritual growth. Through carefully crafted columns and thoughtful discourse, 
+                    we explore the timeless wisdom of Islam and its profound relevance to contemporary life. Join us in discovering the divine guidance 
+                    that illuminates our path and enriches our understanding of faith, purpose, and community.
+                </p>
+                <div class="cta-container">
+                    <a href="columns.html" class="cta-button">Read Latest Column</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Islamic Widgets Section -->
+        <section class="islamic-widgets-section" style="padding: 40px 0; background: var(--bg);">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <!-- Hijri Date -->
+                    <div class="hijri-date-display">
+                        <strong>📅 Islamic Date:</strong>
+                        <div id="hijriDate">Loading...</div>
+                    </div>
+                    
+                    <!-- Verse of the Day -->
+                    <div class="verse-of-day-widget">
+                        <div id="verseOfDay">Loading verse...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Quote Section -->
+        <section class="featured-quote-section">
+            <div class="container">
+                <div class="quote-container" id="featuredQuote">
+                    <div class="quote-icon">📖</div>
+                    <blockquote class="featured-quote-text" id="quoteText">
+                        "And whoever relies upon Allah - then He is sufficient for him. Indeed, Allah will accomplish His purpose."
+                    </blockquote>
+                    <cite class="quote-source" id="quoteSource">- Quran 65:3</cite>
+                    <button class="next-quote-btn" id="nextQuoteBtn" onclick="rotateQuote()">Next Quote →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalColumns">0</div>
+                        <div class="stat-label">Published Columns</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalReaders">1,247</div>
+                        <div class="stat-label">Readers Inspired</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalQuestions">23</div>
+                        <div class="stat-label">Questions Answered</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">Allah's Mercy</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Columns Feature -->
+        <section class="latest-columns-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Publications</h2>
+                    <p class="section-subtitle">Contemporary Islamic discourse addressing modern challenges with timeless wisdom</p>
+                </div>
+                
+                <div id="latestColumnsContainer" class="latest-columns-grid">
+                    <!-- Latest columns will be loaded here dynamically -->
+                    <div class="no-columns-message">
+                        <div class="coming-soon-card">
+                            <h3>📝 Publications Coming Soon</h3>
+                            <p>Thoughtfully curated Islamic content will be published regularly, offering insightful perspectives and practical guidance for navigating contemporary challenges through the lens of Islamic wisdom.</p>
+                            <a href="admin.html" class="admin-link">✍️ Write First Column</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="view-all-container">
+                    <a href="columns.html" class="view-all-btn">View All Columns →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup Section -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-card">
+                    <div class="newsletter-content">
+                        <h2 class="newsletter-title">📧 Subscribe to Updates</h2>
+                        <p class="newsletter-description">
+                            Receive notifications about new publications, Islamic insights, and thoughtful discussions. 
+                            Join our community of readers committed to spiritual growth and intellectual discourse.
+                        </p>
+                        <form class="newsletter-form" id="newsletterForm">
+                            <div class="newsletter-input-group">
+                                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                                <button type="submit" class="newsletter-btn">Subscribe</button>
+                            </div>
+                            <p class="newsletter-privacy">We respect your privacy. Unsubscribe anytime.</p>
+                        </form>
+                    </div>
+                    <div class="newsletter-icon">
+                        <div class="newsletter-graphic">✉️</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- legacy footer removed; site-wide footer injected by js/footer.js -->
+
+    <script defer src="js/theme.js"></script>
+    <script src="js/notification-fix.js"></script>
+    <script src="js/columns-manager.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/features.js"></script>
+    <script defer src="js/footer.js"></script>
+    <script defer src="js/advanced-features.js"></script>
+</body>
+</html>

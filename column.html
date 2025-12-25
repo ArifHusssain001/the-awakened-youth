@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Column - The Awakened Youth</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <img src="images/logo.png" alt="The Awakened Youth logo" class="site-logo">
+                    <h1 class="site-title">The Awakened Youth</h1>
+                </div>
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" class="search-input" placeholder="Search columns, content..." id="searchInput">
+                        <button class="search-btn" onclick="performSearch()" type="button">
+                            <svg class="search-icon" viewBox="0 0 24 24">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            </svg>
+                        </button>
+                        <div class="search-results" id="searchResults"></div>
+                    </div>
+                </div>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" type="button" title="Toggle light / dark">🌙</button>
+            </div>
+            <nav class="navigation">
+                <ul class="main-nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="columns.html" class="active">Columns</a></li>
+                    <li><a href="contact.html">Contact Me</a></li>
+                    <li><a href="feedback.html">Feedback & Questions</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li id="authLinks">
+                        <a href="login.html" style="color: #663399; margin-right: 15px;">Login</a>
+                        <a href="register.html" style="background: #663399; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">Register</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <main>
+        <section class="content-section">
+            <div class="container">
+                <div class="column-detail-layout">
+                    <!-- Sidebar Navigation -->
+                    <aside class="column-sidebar">
+                        <div class="sidebar-sticky">
+                            <a href="columns.html" class="back-link">
+                                <span class="back-icon">←</span>
+                                <span>All Columns</span>
+                            </a>
+                            
+                            <div class="table-of-contents" id="tableOfContents">
+                                <h4>Table of Contents</h4>
+                                <ul id="tocList"></ul>
+                            </div>
+                            
+                            <div class="column-actions">
+                                <button class="action-btn" id="bookmarkBtn" title="Bookmark">
+                                    <span class="action-icon">🔖</span>
+                                    <span class="action-label">Save</span>
+                                </button>
+                                <button class="action-btn" id="printBtn" title="Print">
+                                    <span class="action-icon">🖨️</span>
+                                    <span class="action-label">Print</span>
+                                </button>
+                                <button class="action-btn" id="shareBtn" title="Share">
+                                    <span class="action-icon">📤</span>
+                                    <span class="action-label">Share</span>
+                                </button>
+                            </div>
+                        </div>
+                    </aside>
+                    
+                    <!-- Main Content -->
+                    <article class="column-main-content">
+                        <div id="columnContent" class="single-column">
+                            <!-- Column content will be loaded here -->
+                        </div>
+                        
+                        <div id="columnNotFound" class="not-found-state" style="display: none;">
+                            <div class="not-found-icon">📭</div>
+                            <h2>Column Not Found</h2>
+                            <p>The column you're looking for doesn't exist or has been removed.</p>
+                            <a href="columns.html" class="cta-btn primary">View All Columns</a>
+                        </div>
+                        
+                        <!-- Share Modal -->
+                        <div class="share-modal" id="shareModal" style="display: none;">
+                            <div class="share-modal-overlay" onclick="closeShareModal()"></div>
+                            <div class="share-modal-content">
+                                <button class="share-modal-close" onclick="closeShareModal()">×</button>
+                                <h3>Share this Column</h3>
+                                <div class="share-buttons-grid">
+                                    <button class="share-btn-large whatsapp" onclick="shareOn('whatsapp')">
+                                        <span class="share-btn-icon">💬</span>
+                                        <span class="share-btn-text">WhatsApp</span>
+                                    </button>
+                                    <button class="share-btn-large twitter" onclick="shareOn('twitter')">
+                                        <span class="share-btn-icon">🐦</span>
+                                        <span class="share-btn-text">Twitter</span>
+                                    </button>
+                                    <button class="share-btn-large facebook" onclick="shareOn('facebook')">
+                                        <span class="share-btn-icon">📘</span>
+                                        <span class="share-btn-text">Facebook</span>
+                                    </button>
+                                    <button class="share-btn-large telegram" onclick="shareOn('telegram')">
+                                        <span class="share-btn-icon">✈️</span>
+                                        <span class="share-btn-text">Telegram</span>
+                                    </button>
+                                    <button class="share-btn-large copy" onclick="copyLink()">
+                                        <span class="share-btn-icon">🔗</span>
+                                        <span class="share-btn-text">Copy Link</span>
+                                    </button>
+                                    <button class="share-btn-large email" onclick="shareOn('email')">
+                                        <span class="share-btn-icon">📧</span>
+                                        <span class="share-btn-text">Email</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- legacy footer removed; site-wide footer injected by js/footer.js -->
+
+    <script src="js/search.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        let currentColumn = null;
+
+        function getColumnId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+        }
+
+        function loadColumn() {
+            const columnId = getColumnId();
+            if (!columnId) {
+                showNotFound();
+                return;
+            }
+
+            const columns = JSON.parse(localStorage.getItem('columns') || '[]');
+            const column = columns.find(col => col.id === columnId && col.status === 'published');
+
+            if (!column) {
+                showNotFound();
+                return;
+            }
+
+            currentColumn = column;
+
+            // Update page title and meta
+            document.title = `${column.title} - The Awakened Youth`;
+
+            // Calculate reading time
+            const wordCount = column.content.split(/\s+/).length;
+            const readingTime = Math.ceil(wordCount / 200);
+
+            // Display column
+            const contentContainer = document.getElementById('columnContent');
+            contentContainer.innerHTML = `
+                <div class="column-header">
+                    <div class="column-category-badge">${column.category || 'General'}</div>
+                    <h1 class="column-detail-title">${column.title}</h1>
+                    <div class="column-meta-info">
+                        <span class="meta-item">
+                            <span class="meta-icon">📅</span>
+                            ${new Date(column.createdAt).toLocaleDateString('en-US', { 
+                                year: 'numeric', 
+                                month: 'long', 
+                                day: 'numeric' 
+                            })}
+                        </span>
+                        <span class="meta-item">
+                            <span class="meta-icon">📖</span>
+                            ${readingTime} min read
+                        </span>
+                        <span class="meta-item">
+                            <span class="meta-icon">👁️</span>
+                            <span id="viewCount">0</span> views
+                        </span>
+                    </div>
+                </div>
+                <div class="column-body">
+                    ${convertToHTML(column.content)}
+                </div>
+                <div class="column-footer">
+                    <div class="column-closing">
+                        <div class="closing-icon">🤲</div>
+                        <p>May Allah (SWT) accept this humble effort and make it beneficial for all who read it.</p>
+                    </div>
+                    <div class="column-footer-actions">
+                        <a href="columns.html" class="footer-btn secondary">
+                            <span>📚</span> More Columns
+                        </a>
+                        <a href="feedback.html" class="footer-btn primary">
+                            <span>💬</span> Share Feedback
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            // Generate table of contents
+            generateTableOfContents();
+            
+            // Track view
+            trackView(columnId);
+            
+            // Setup reading progress
+            setupReadingProgress();
+            
+            // Check bookmark status
+            updateBookmarkButton();
+        }
+
+        function showNotFound() {
+            document.getElementById('columnContent').style.display = 'none';
+            document.getElementById('columnNotFound').style.display = 'flex';
+        }
+
+        function convertToHTML(text) {
+            return text
+                .replace(/### (.*$)/gim, '<h3 id="heading-$1" class="content-heading h3">$1</h3>')
+                .replace(/## (.*$)/gim, '<h2 id="heading-$1" class="content-heading h2">$1</h2>')
+                .replace(/# (.*$)/gim, '<h1 id="heading-$1" class="content-heading h1">$1</h1>')
+                .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+                .replace(/> (.*$)/gim, '<blockquote class="content-quote">$1</blockquote>')
+                .replace(/^- (.*$)/gim, '<li class="content-list-item">$1</li>')
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2" class="content-link" target="_blank">$1</a>')
+                .replace(/\n\n/gim, '</p><p class="content-paragraph">')
+                .replace(/\n/gim, '<br>')
+                .replace(/^(.)/gim, '<p class="content-paragraph">$1')
+                .replace(/(.)$/gim, '$1</p>');
+        }
+
+        function generateTableOfContents() {
+            const headings = document.querySelectorAll('.content-heading');
+            const tocList = document.getElementById('tocList');
+            
+            if (headings.length === 0) {
+                document.querySelector('.table-of-contents').style.display = 'none';
+                return;
+            }
+
+            tocList.innerHTML = Array.from(headings).map((heading, index) => {
+                const id = `heading-${index}`;
+                heading.id = id;
+                const level = heading.tagName.toLowerCase();
+                return `<li class="toc-item toc-${level}">
+                    <a href="#${id}" class="toc-link">${heading.textContent}</a>
+                </li>`;
+            }).join('');
+
+            // Smooth scroll for TOC links
+            document.querySelectorAll('.toc-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(link.getAttribute('href'));
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+        }
+
+        function setupReadingProgress() {
+            const progressBar = document.getElementById('readingProgress');
+            
+            window.addEventListener('scroll', () => {
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight - windowHeight;
+                const scrolled = window.scrollY;
+                const progress = (scrolled / documentHeight) * 100;
+                
+                progressBar.style.width = `${Math.min(progress, 100)}%`;
+            });
+        }
+
+        function trackView(columnId) {
+            const views = JSON.parse(localStorage.getItem('column_views') || '{}');
+            views[columnId] = (views[columnId] || 0) + 1;
+            localStorage.setItem('column_views', JSON.stringify(views));
+            
+            document.getElementById('viewCount').textContent = views[columnId];
+        }
+
+        // Bookmark functionality
+        document.getElementById('bookmarkBtn')?.addEventListener('click', function() {
+            if (!currentColumn) return;
+            
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            const index = bookmarks.findIndex(b => b.id === currentColumn.id);
+            
+            if (index > -1) {
+                bookmarks.splice(index, 1);
+                showToast('Bookmark removed');
+            } else {
+                bookmarks.push({
+                    id: currentColumn.id,
+                    title: currentColumn.title,
+                    date: new Date().toISOString()
+                });
+                showToast('Column bookmarked!');
+            }
+            
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            updateBookmarkButton();
+        });
+
+        function updateBookmarkButton() {
+            if (!currentColumn) return;
+            
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            const isBookmarked = bookmarks.some(b => b.id === currentColumn.id);
+            const btn = document.getElementById('bookmarkBtn');
+            
+            if (isBookmarked) {
+                btn.classList.add('active');
+                btn.querySelector('.action-icon').textContent = '✅';
+            }
+        }
+
+        // Print functionality
+        document.getElementById('printBtn')?.addEventListener('click', () => {
+            window.print();
+        });
+
+        // Share functionality
+        document.getElementById('shareBtn')?.addEventListener('click', () => {
+            document.getElementById('shareModal').style.display = 'flex';
+        });
+
+        function closeShareModal() {
+            document.getElementById('shareModal').style.display = 'none';
+        }
+
+        function shareOn(platform) {
+            if (!currentColumn) return;
+            
+            const url = window.location.href;
+            const title = currentColumn.title;
+            const text = `Check out this column: ${title}`;
+            
+            const urls = {
+                whatsapp: `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`,
+                twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+                facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+                telegram: `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`,
+                email: `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(text + '\n\n' + url)}`
+            };
+            
+            if (urls[platform]) {
+                window.open(urls[platform], '_blank');
+                closeShareModal();
+            }
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                showToast('Link copied to clipboard!');
+                closeShareModal();
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.classList.add('show'), 100);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', loadColumn);
+    </script>
+    <script defer src="js/theme.js"></script>
+    <script defer src="js/footer.js"></script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - The Awakened Youth</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <style>
+        .auth-container {
+            max-width: 400px;
+            margin: 50px auto;
+            background: #FFFFFF;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 2px solid #E6E6FF;
+        }
+        
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .auth-header h2 {
+            color: #330066;
+            margin-bottom: 10px;
+        }
+        
+        .auth-header p {
+            color: #666666;
+        }
+        
+        .auth-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .auth-form label {
+            display: block;
+            color: #330066;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .auth-form input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E6E6FF;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .auth-form input:focus {
+            outline: none;
+            border-color: #663399;
+        }
+        
+        .auth-btn {
+            width: 100%;
+            background: #663399;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .auth-btn:hover {
+            background: #330066;
+        }
+        
+        .auth-links {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #E6E6FF;
+        }
+        
+        .auth-links a {
+            color: #663399;
+            text-decoration: none;
+        }
+        
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #ffcdd2;
+        }
+        
+        .success-message {
+            background: #e8f5e8;
+            color: #2e7d32;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #c8e6c9;
+        }
+        
+        .demo-credentials {
+            background: #F5F0FF;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #E6E6FF;
+            font-size: 0.9rem;
+        }
+        
+        .demo-credentials h4 {
+            color: #330066;
+            margin-bottom: 10px;
+        }
+        
+        .forgot-password {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .forgot-password a {
+            color: #663399;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <img src="images/logo.png" alt="The Awakened Youth logo" class="site-logo">
+                    <h1 class="site-title">The Awakened Youth</h1>
+                </div>
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" class="search-input" placeholder="Search columns, content..." id="searchInput">
+                        <button class="search-btn" onclick="performSearch()" type="button">
+                            <svg class="search-icon" viewBox="0 0 24 24">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            </svg>
+                        </button>
+                        <div class="search-results" id="searchResults"></div>
+                    </div>
+                </div>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" type="button" title="Toggle light / dark">🌙</button>
+            </div>
+            <nav class="navigation">
+                <ul class="main-nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="columns.html">Columns</a></li>
+                    <li><a href="contact.html">Contact Me</a></li>
+                    <li><a href="feedback.html">Feedback & Questions</a></li>
+                    <li id="authLinks">
+                        <a href="login.html" style="color: #663399; margin-right: 15px;">Login</a>
+                        <a href="register.html" style="background: #663399; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">Register</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h2 class="page-title">Welcome Back</h2>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="auth-container">
+                    <div class="auth-header">
+                        <h2>Login to Your Account</h2>
+                        <p>Access your dashboard and continue writing</p>
+                    </div>
+
+                    <div class="demo-credentials">
+                        <h4>Demo Credentials:</h4>
+                        <strong>Admin Access:</strong><br>
+                        Email: admin | Password: awakened2024<br><br>
+                        <strong>New Writers:</strong> <a href="register.html">Register here</a>
+                    </div>
+
+                    <div id="messageContainer"></div>
+
+                    <form class="auth-form" id="loginForm">
+                        <div class="form-group">
+                            <label for="email">Email or Username:</label>
+                            <input type="text" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+
+                        <button type="submit" class="auth-btn">Login</button>
+                    </form>
+
+                    <div class="forgot-password">
+                        <a href="forgot-password.html">Forgot your password?</a>
+                    </div>
+
+                    <div class="auth-links">
+                        <p>Don't have an account? <a href="register.html">Register as a Writer</a></p>
+                        <p><a href="index.html">← Back to Home</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- legacy footer removed; site-wide footer injected by js/footer.js -->
+
+    <script defer src="js/theme.js"></script>
+    <script defer src="js/notifications.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/features.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const messageContainer = document.getElementById('messageContainer');
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            
+            // Clear previous messages
+            messageContainer.innerHTML = '';
+            
+            try {
+                const user = authSystem.login(email, password);
+                
+                messageContainer.innerHTML = `
+                    <div class="success-message">
+                        <strong>Login Successful!</strong><br>
+                        Welcome back, ${user.name}!
+                    </div>
+                `;
+                
+                // Redirect based on user role
+                setTimeout(() => {
+                    if (user.role === 'admin') {
+                        window.location.href = 'admin.html';
+                    } else if (user.role === 'contributor') {
+                        window.location.href = 'writer-dashboard.html';
+                    } else {
+                        window.location.href = 'index.html';
+                    }
+                }, 1500);
+                
+            } catch (error) {
+                messageContainer.innerHTML = `<div class="error-message">${error.message}</div>`;
+            }
+        });
+
+        // Check if already logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            if (authSystem.isLoggedIn()) {
+                const user = authSystem.getCurrentUser();
+                if (user.role === 'admin') {
+                    window.location.href = 'admin.html';
+                } else if (user.role === 'contributor') {
+                    window.location.href = 'writer-dashboard.html';
+                }
+            }
+        });
+    </script>
+    <script defer src="js/footer.js"></script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - The Awakened Youth</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <header class="header">
+        <div class="main-header-wrapper">
+            <a href="index.html" class="logo" title="The Awakened Youth - Home">
+                <img src="images/logo.png" alt="The Awakened Youth logo" class="site-logo">
+                <h1 class="site-title">The Awakened Youth</h1>
+            </a>
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Search columns, content..." id="searchInput">
+                    <button class="search-btn" onclick="performSearch()" type="button">
+                        <svg class="search-icon" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                    </button>
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+            </div>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" type="button" title="Toggle light / dark">🌙</button>
+            
+            <!-- Notification Bell -->
+            <div class="notification-container">
+                <button id="notificationsButton" class="notification-bell" aria-haspopup="true" aria-expanded="false" aria-label="Notifications">
+                    🔔
+                    <span id="notificationsBadge" class="notification-badge" style="display:none"></span>
+                </button>
+                <div id="notificationsDropdown" class="notifications-dropdown" role="region" aria-hidden="true">
+                    <div class="notifications-header">
+                        <strong>Notifications</strong>
+                        <div class="notifications-actions">
+                            <button id="markAllReadBtn" type="button">Mark all read</button>
+                        </div>
+                    </div>
+                    <ul id="notificationsList" class="notifications-list"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="main-nav-links-wrapper">
+            <nav class="navigation">
+                <ul class="main-nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About Me</a></li>
+                    <li><a href="columns.html">Columns</a></li>
+                    <li><a href="contact.html">Contact Me</a></li>
+                    <li><a href="feedback.html">Feedback & Questions</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li id="authLinks">
+                        <a href="login.html" style="color: #663399; margin-right: 15px;">Login</a>
+                        <a href="register.html" style="background: #663399; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">Register</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h2 class="page-title">About the Writer</h2>
+                <p class="page-subtitle">Bridging timeless Islamic wisdom with contemporary discourse</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <!-- Enhanced Writer Profile -->
+                <div class="writer-profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <div class="avatar-placeholder">
+                                <span class="avatar-icon">✍️</span>
+                                <div class="avatar-ring"></div>
+                            </div>
+                            <div class="profile-status">
+                                <span class="status-indicator"></span>
+                                <span class="status-text">Writing with purpose</span>
+                            </div>
+                        </div>
+                        <div class="profile-info">
+                            <h2 class="writer-name">Syeda Maha</h2>
+                            <p class="writer-title">Contemporary Islamic Writer</p>
+                            <p class="writer-bio">Dedicated to articulating Islamic principles in contemporary contexts through thoughtful writing and accessible insights.</p>
+                            <div class="writer-stats">
+                                <div class="stat">
+                                    <span class="stat-number" id="aboutColumnsCount">0</span>
+                                    <span class="stat-label">Columns</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">2026</span>
+                                    <span class="stat-label">Started</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">∞</span>
+                                    <span class="stat-label">Hope</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission Statement -->
+                <div class="mission-statement">
+                    <div class="mission-icon">🎯</div>
+                    <h3>Mission Statement</h3>
+                    <p>To provide intellectual frameworks that help Muslims navigate modern challenges while remaining firmly rooted in authentic Islamic teachings, fostering spiritual growth and intellectual discourse within the contemporary Muslim community.</p>
+                </div>
+
+                <!-- Modern Journey Cards -->
+                <div class="journey-section">
+                    <h2 class="section-title">My Journey</h2>
+                    <div class="journey-cards-grid">
+                        <div class="journey-card">
+                            <div class="journey-card-icon">🌱</div>
+                            <h3>Academic Foundation</h3>
+                            <p>Assalamu Alaikum and welcome. My journey in Islamic writing began with a commitment to bridging classical Islamic knowledge with contemporary discourse.</p>
+                        </div>
+                        
+                        <div class="journey-card">
+                            <div class="journey-card-icon">💡</div>
+                            <h3>Writing Mission</h3>
+                            <p>Through thoughtful writing and accessible insights, I provide intellectual frameworks that help Muslims navigate modern challenges.</p>
+                        </div>
+                        
+                        <div class="journey-card">
+                            <div class="journey-card-icon">🎯</div>
+                            <h3>The Mission</h3>
+                            <p>Addressing questions, struggles, and aspirations while strengthening our relationship with Allah (SWT) and staying true to Islamic values.</p>
+                        </div>
+                        
+                        <div class="journey-card">
+                            <div class="journey-card-icon">🤲</div>
+                            <h3>The Prayer</h3>
+                            <p>Every heart has the capacity for awakening. I pray that Allah (SWT) accepts this humble effort and makes it beneficial for all.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Quotes Carousel -->
+                <div class="quotes-carousel-section">
+                    <h2 class="section-title">Guiding Verses 📖</h2>
+                    <div class="quotes-carousel" id="quotesCarousel">
+                        <div class="quote-slide active">
+                            <div class="quote-content">
+                                <blockquote>"And whoever relies upon Allah - then He is sufficient for him. Indeed, Allah will accomplish His purpose."</blockquote>
+                                <cite>- Quran 65:3</cite>
+                            </div>
+                        </div>
+                        <div class="quote-slide">
+                            <div class="quote-content">
+                                <blockquote>"And it is He who created the heavens and earth in truth. And the day He says, 'Be,' and it is, His word is the truth."</blockquote>
+                                <cite>- Quran 6:73</cite>
+                            </div>
+                        </div>
+                        <div class="quote-slide">
+                            <div class="quote-content">
+                                <blockquote>"So remember Me; I will remember you. And be grateful to Me and do not deny Me."</blockquote>
+                                <cite>- Quran 2:152</cite>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev" onclick="changeQuote(-1)">‹</button>
+                        <div class="carousel-dots" id="carouselDots"></div>
+                        <button class="carousel-btn next" onclick="changeQuote(1)">›</button>
+                    </div>
+                </div>
+
+                <!-- Interactive Values Section -->
+                <div class="values-section">
+                    <h2 class="section-title">Core Values 💎</h2>
+                    <div class="values-grid">
+                        <div class="value-card" data-value="compassion">
+                            <div class="value-icon">🤲</div>
+                            <h3>Compassion</h3>
+                            <p>Writing with empathy and understanding for the struggles of modern Muslim youth.</p>
+                        </div>
+                        <div class="value-card" data-value="authenticity">
+                            <div class="value-icon">💎</div>
+                            <h3>Authenticity</h3>
+                            <p>Staying true to Islamic teachings while addressing contemporary challenges.</p>
+                        </div>
+                        <div class="value-card" data-value="guidance">
+                            <div class="value-icon">🧭</div>
+                            <h3>Guidance</h3>
+                            <p>Providing practical Islamic wisdom for navigating life's complexities.</p>
+                        </div>
+                        <div class="value-card" data-value="hope">
+                            <div class="value-icon">🌟</div>
+                            <h3>Hope</h3>
+                            <p>Inspiring hearts to find purpose and peace through Allah's guidance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expertise Areas -->
+                <div class="expertise-section">
+                    <h2 class="section-title">Areas of Focus 📚</h2>
+                    <div class="expertise-grid">
+                        <div class="expertise-card">
+                            <div class="expertise-icon">📖</div>
+                            <h4>Islamic Writing</h4>
+                            <p>Classical Islamic knowledge applied to contemporary contexts</p>
+                        </div>
+                        <div class="expertise-card">
+                            <div class="expertise-icon">💭</div>
+                            <h4>Spiritual Growth</h4>
+                            <p>Practical guidance for strengthening faith and connection with Allah</p>
+                        </div>
+                        <div class="expertise-card">
+                            <div class="expertise-icon">🌍</div>
+                            <h4>Modern Challenges</h4>
+                            <p>Addressing contemporary issues through Islamic wisdom</p>
+                        </div>
+                        <div class="expertise-card">
+                            <div class="expertise-icon">👥</div>
+                            <h4>Youth Guidance</h4>
+                            <p>Supporting Muslim youth in navigating life's complexities</p>
+                        </div>
+                        <div class="expertise-card">
+                            <div class="expertise-icon">✨</div>
+                            <h4>Purpose & Meaning</h4>
+                            <p>Finding purpose and peace through divine guidance</p>
+                        </div>
+                        <div class="expertise-card">
+                            <div class="expertise-icon">🤲</div>
+                            <h4>Community Building</h4>
+                            <p>Fostering unity and understanding within the Ummah</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonials / Impact -->
+                <div class="impact-section">
+                    <h2 class="section-title">Reader Reflections 💬</h2>
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <div class="testimonial-quote">"</div>
+                            <p class="testimonial-text">The columns provide much-needed clarity on navigating modern life while staying true to Islamic values. Truly inspiring work.</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">A</div>
+                                <div class="author-info">
+                                    <strong>Anonymous Reader</strong>
+                                    <span>Regular Visitor</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-quote">"</div>
+                            <p class="testimonial-text">A refreshing perspective that combines thoughtful depth with practical wisdom. These writings have helped me strengthen my faith.</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">M</div>
+                                <div class="author-info">
+                                    <strong>Muslim Youth</strong>
+                                    <span>Community Member</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-quote">"</div>
+                            <p class="testimonial-text">The thoughtful approach to addressing contemporary challenges through Islamic teachings is exactly what our generation needs.</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">S</div>
+                                <div class="author-info">
+                                    <strong>Student</strong>
+                                    <span>Seeking Knowledge</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Contact CTA -->
+                <div class="about-cta-section">
+                    <div class="cta-card">
+                        <h2>Let's Connect 🤝</h2>
+                        <p>JazakAllahu Khair for taking the time to visit and read. May Allah (SWT) guide us all on the straight path and grant us success in this life and the hereafter.</p>
+                        <div class="cta-buttons">
+                            <a href="contact.html" class="cta-btn primary">Get in Touch</a>
+                            <a href="feedback.html" class="cta-btn secondary">Ask Questions</a>
+                            <a href="columns.html" class="cta-btn secondary">Read Columns</a>
+                        </div>
+                        <div class="social-connect">
+                            <p class="social-label">Follow the Journey</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link" aria-label="Email">📧</a>
+                                <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+                                <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- legacy footer removed; site-wide footer injected by js/footer.js -->
+
+    <script src="js/notification-fix.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/about-features.js"></script>
+    <script defer src="js/theme.js"></script>
+    <script defer src="js/notifications.js"></script>
+    <script defer src="js/footer.js"></script>
+</body>
+</html>

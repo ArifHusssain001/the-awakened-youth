@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback & Questions - The Awakened Youth</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <header class="header">
+        <div class="main-header-wrapper">
+            <a href="index.html" class="logo" title="The Awakened Youth - Home">
+                <img src="images/logo.png" alt="The Awakened Youth logo" class="site-logo">
+                <h1 class="site-title">The Awakened Youth</h1>
+            </a>
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Search columns, content..." id="searchInput">
+                    <button class="search-btn" onclick="performSearch()" type="button">
+                        <svg class="search-icon" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                    </button>
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+            </div>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" type="button" title="Toggle light / dark">🌙</button>
+            
+            <!-- Notification Bell -->
+            <div class="notification-container">
+                <button id="notificationsButton" class="notification-bell" aria-haspopup="true" aria-expanded="false" aria-label="Notifications">
+                    🔔
+                    <span id="notificationsBadge" class="notification-badge" style="display:none"></span>
+                </button>
+                <div id="notificationsDropdown" class="notifications-dropdown" role="region" aria-hidden="true">
+                    <div class="notifications-header">
+                        <strong>Notifications</strong>
+                        <div class="notifications-actions">
+                            <button id="markAllReadBtn" type="button">Mark all read</button>
+                        </div>
+                    </div>
+                    <ul id="notificationsList" class="notifications-list"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="main-nav-links-wrapper">
+            <nav class="navigation">
+                <ul class="main-nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="columns.html">Columns</a></li>
+                    <li><a href="contact.html">Contact Me</a></li>
+                    <li><a href="feedback.html" class="active">Feedback & Questions</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li id="authLinks">
+                        <a href="login.html" style="color: #663399; margin-right: 15px;">Login</a>
+                        <a href="register.html" style="background: #663399; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">Register</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h2 class="page-title">Feedback & Q&A</h2>
+                <p class="page-subtitle">Ask questions, share thoughts, seek guidance</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <!-- Stats Section -->
+                <div class="feedback-stats">
+                    <div class="feedback-stat">
+                        <span class="feedback-stat-number" id="totalQuestions">0</span>
+                        <span class="feedback-stat-label">Questions Answered</span>
+                    </div>
+                    <div class="feedback-stat">
+                        <span class="feedback-stat-number" id="totalFeedback">0</span>
+                        <span class="feedback-stat-label">Feedback Received</span>
+                    </div>
+                    <div class="feedback-stat">
+                        <span class="feedback-stat-number">24h</span>
+                        <span class="feedback-stat-label">Response Time</span>
+                    </div>
+                </div>
+
+                <div class="form-container">
+                    <div class="feedback-intro">
+                        <h3>Submit Your Question or Feedback</h3>
+                        <p>
+                            Welcome to the Feedback & Questions page! Here you can ask questions, share your thoughts, 
+                            or provide feedback about the content. Your approved questions and my responses will be 
+                            displayed below for the benefit of all visitors.
+                        </p>
+                    </div>
+                    </div>
+
+                    <form class="contact-form" action="mailto:syedamaha087@gmail.com" method="post" enctype="text/plain">
+                        <div class="form-group">
+                            <label for="name">Your Name:</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your name or leave blank for anonymous">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Your Email (Optional):</label>
+                            <input type="email" id="email" name="email" placeholder="Your email for private response (optional)">
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="anonymous" name="anonymous">
+                            <label for="anonymous">Submit anonymously</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="question">Your Question or Feedback:</label>
+                            <textarea id="question" name="question" placeholder="Please share your question, feedback, or thoughts..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn feedback-btn">Submit Question</button>
+                    </form>
+
+                    <div class="closing-note">
+                        <p>
+                            Questions will be reviewed before being published. I aim to provide thoughtful, 
+                            Islamic guidance in my responses. JazakAllahu Khair for your participation!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Q&A Display Section -->
+                <div class="qa-section">
+                    <h3>Questions & Answers</h3>
+                    
+                    <div class="qa-empty">
+                        <p>No questions have been published yet. Be the first to ask a question!</p>
+                    </div>
+                    
+                    <!-- Future Q&A items will be added here in this format:
+                    <div class="qa-item">
+                        <div class="question">
+                            <strong>Q:</strong> Question text here...
+                        </div>
+                        <div class="answer">
+                            <strong>A:</strong> Answer text here...
+                        </div>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- legacy footer removed; site-wide footer injected by js/footer.js -->
+
+    <script src="js/notification-fix.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/features.js"></script>
+    <script defer src="js/theme.js"></script>
+    <script defer src="js/notifications.js"></script>
+    <script>
+        // Enhanced form handling for feedback form
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            const name = document.getElementById('name').value || 'Anonymous';
+            const email = document.getElementById('email').value;
+            const question = document.getElementById('question').value;
+            const isAnonymous = document.getElementById('anonymous').checked;
+            
+            // Create formatted email body for Q&A submission
+            const emailBody = `FEEDBACK & QUESTION SUBMISSION\n\nName: ${isAnonymous ? 'Anonymous' : name}\nEmail: ${email || 'Not provided'}\nAnonymous Submission: ${isAnonymous ? 'Yes' : 'No'}\n\nQuestion/Feedback:\n${question}`;
+            
+            // Update the action with formatted content
+            this.action = `mailto:syedamaha087@gmail.com?subject=Q&A Submission - The Awakened Youth&body=${encodeURIComponent(emailBody)}`;
+        });
+
+        // Handle anonymous checkbox
+        document.getElementById('anonymous').addEventListener('change', function() {
+            const nameField = document.getElementById('name');
+            if (this.checked) {
+                nameField.value = '';
+                nameField.disabled = true;
+                nameField.placeholder = 'Anonymous submission selected';
+            } else {
+                nameField.disabled = false;
+                nameField.placeholder = 'Enter your name or leave blank for anonymous';
+            }
+        });
+    </script>
+    <script defer src="js/footer.js"></script>
+</body>
+</html>

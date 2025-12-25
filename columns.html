@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Columns - The Awakened Youth</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <header class="header">
+        <div class="main-header-wrapper">
+            <a href="index.html" class="logo" title="The Awakened Youth - Home">
+                <img src="images/logo.png" alt="The Awakened Youth logo" class="site-logo">
+                <h1 class="site-title">The Awakened Youth</h1>
+            </a>
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Search columns..." id="searchInput">
+                    <button class="search-btn" onclick="performSearch()" type="button">
+                        <svg class="search-icon" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                    </button>
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+            </div>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" type="button" title="Toggle light / dark">🌙</button>
+            
+            <!-- Notification Bell -->
+            <div class="notification-container">
+                <button id="notificationsButton" class="notification-bell" aria-haspopup="true" aria-expanded="false" aria-label="Notifications">
+                    🔔
+                    <span id="notificationsBadge" class="notification-badge" style="display:none"></span>
+                </button>
+                <div id="notificationsDropdown" class="notifications-dropdown" role="region" aria-hidden="true">
+                    <div class="notifications-header">
+                        <strong>Notifications</strong>
+                        <div class="notifications-actions">
+                            <button id="markAllReadBtn" type="button">Mark all read</button>
+                        </div>
+                    </div>
+                    <ul id="notificationsList" class="notifications-list"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="main-nav-links-wrapper">
+            <nav class="navigation">
+                <ul class="main-nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="columns.html" class="active">Columns</a></li>
+                    <li><a href="contact.html">Contact Me</a></li>
+                    <li><a href="feedback.html">Feedback & Questions</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li id="authLinks">
+                        <a href="login.html" style="color: #663399; margin-right: 15px;">Login</a>
+                        <a href="register.html" style="background: #663399; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">Register</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h2 class="page-title">Columns: Reflections & Guidance</h2>
+                <p class="page-subtitle">Timeless wisdom for contemporary challenges</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <!-- Enhanced Search and Filter Section -->
+                <div class="columns-header">
+                    <div class="columns-search-box">
+                        <div class="search-icon-wrapper">🔍</div>
+                        <input type="text" id="columnsSearchInput" placeholder="Search through all columns..." class="columns-search-input">
+                    </div>
+                    
+                    <div class="columns-filters">
+                        <button class="filter-btn active" data-filter="all">All Columns</button>
+                        <button class="filter-btn" data-filter="faith">Faith & Spirituality</button>
+                        <button class="filter-btn" data-filter="guidance">Life Guidance</button>
+                        <button class="filter-btn" data-filter="youth">Youth Issues</button>
+                        <button class="filter-btn" data-filter="recent">Most Recent</button>
+                    </div>
+                </div>
+
+                <!-- Columns Grid -->
+                <div class="columns-grid" id="columnsGrid">
+                    <!-- Columns will be loaded here dynamically -->
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-state-icon">📝</div>
+                    <h3>Coming Soon, In Sha Allah</h3>
+                    <p>
+                        New columns and reflections will be published here regularly. 
+                        Each piece will offer gentle reminders, practical guidance, and thoughtful 
+                        reflections on living as a Muslim in today's world.
+                    </p>
+                    <div class="empty-state-actions">
+                        <a href="contact.html" class="cta-btn primary">Suggest a Topic</a>
+                        <a href="feedback.html" class="cta-btn secondary">Ask Questions</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- legacy footer removed; site-wide footer injected by js/footer.js -->
+
+    <script src="js/notification-fix.js"></script>
+    <script src="js/columns-manager.js"></script>
+    <script src="js/features.js"></script>
+    <script defer src="js/theme.js"></script>
+    <script defer src="js/notifications.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Enhanced Columns Page Features
+        document.addEventListener('DOMContentLoaded', function() {
+            const columnsGrid = document.getElementById('columnsGrid');
+            const emptyState = document.getElementById('emptyState');
+            const searchInput = document.getElementById('columnsSearchInput');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            let allColumns = [];
+            let currentFilter = 'all';
+            
+            // Load columns
+            function loadColumns() {
+                const columns = JSON.parse(localStorage.getItem('columns') || '[]');
+                allColumns = columns.filter(col => col.status === 'published');
+                
+                if (allColumns.length === 0) {
+                    emptyState.style.display = 'block';
+                    columnsGrid.style.display = 'none';
+                } else {
+                    emptyState.style.display = 'none';
+                    columnsGrid.style.display = 'grid';
+                    displayColumns(allColumns);
+                }
+            }
+            
+            // Display columns
+            function displayColumns(columns) {
+                if (columns.length === 0) {
+                    columnsGrid.innerHTML = `
+                        <div class="no-results" style="grid-column: 1 / -1;">
+                            <div class="no-results-icon">🔍</div>
+                            <h4>No columns found</h4>
+                            <p>Try adjusting your search or filter</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                columnsGrid.innerHTML = columns.map(column => `
+                    <article class="column-card-enhanced">
+                        <div class="column-card-image">📝</div>
+                        <div class="column-card-content">
+                            <div class="column-card-meta">
+                                <span class="column-card-category">${column.category || 'General'}</span>
+                                <span>${new Date(column.createdAt).toLocaleDateString()}</span>
+                            </div>
+                            <h3 class="column-title">${column.title}</h3>
+                            <p class="column-snippet">${column.content.substring(0, 150)}...</p>
+                            <div class="column-card-footer">
+                                <div class="column-card-stats">
+                                    <span class="column-card-stat">📖 ${Math.ceil(column.content.split(' ').length / 200)} min read</span>
+                                </div>
+                                <a href="column.html?id=${column.id}" class="read-more-btn">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+                `).join('');
+                
+                // Animate cards
+                const cards = columnsGrid.querySelectorAll('.column-card-enhanced');
+                cards.forEach((card, index) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)';
+                    setTimeout(() => {
+                        card.style.transition = 'all 0.5s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            }
+            
+            // Search functionality
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const query = this.value.toLowerCase();
+                    const filtered = allColumns.filter(col => 
+                        col.title.toLowerCase().includes(query) ||
+                        col.content.toLowerCase().includes(query)
+                    );
+                    displayColumns(filtered);
+                });
+            }
+            
+            // Filter functionality
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    currentFilter = filter;
+                    
+                    let filtered = allColumns;
+                    if (filter !== 'all') {
+                        if (filter === 'recent') {
+                            filtered = [...allColumns].sort((a, b) => 
+                                new Date(b.createdAt) - new Date(a.createdAt)
+                            ).slice(0, 6);
+                        } else {
+                            filtered = allColumns.filter(col => 
+                                (col.category || '').toLowerCase() === filter
+                            );
+                        }
+                    }
+                    
+                    displayColumns(filtered);
+                });
+            });
+            
+            // Initial load
+            loadColumns();
+            
+            // Listen for column updates
+            document.addEventListener('columnsUpdated', loadColumns);
+        });
+    </script>
+    <script defer src="js/footer.js"></script>
+</body>
+</html>

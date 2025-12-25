@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me - The Awakened Youth</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <header class="header">
+        <div class="main-header-wrapper">
+            <a href="index.html" class="logo" title="The Awakened Youth - Home">
+                <img src="images/logo.png" alt="The Awakened Youth logo" class="site-logo">
+                <h1 class="site-title">The Awakened Youth</h1>
+            </a>
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Search columns, content..." id="searchInput">
+                    <button class="search-btn" onclick="performSearch()" type="button">
+                        <svg class="search-icon" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                    </button>
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+            </div>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" type="button" title="Toggle light / dark">🌙</button>
+            
+            <!-- Notification Bell -->
+            <div class="notification-container">
+                <button id="notificationsButton" class="notification-bell" aria-haspopup="true" aria-expanded="false" aria-label="Notifications">
+                    🔔
+                    <span id="notificationsBadge" class="notification-badge" style="display:none"></span>
+                </button>
+                <div id="notificationsDropdown" class="notifications-dropdown" role="region" aria-hidden="true">
+                    <div class="notifications-header">
+                        <strong>Notifications</strong>
+                        <div class="notifications-actions">
+                            <button id="markAllReadBtn" type="button">Mark all read</button>
+                        </div>
+                    </div>
+                    <ul id="notificationsList" class="notifications-list"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="main-nav-links-wrapper">
+            <nav class="navigation">
+                <ul class="main-nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="columns.html">Columns</a></li>
+                    <li><a href="contact.html" class="active">Contact Me</a></li>
+                    <li><a href="feedback.html">Feedback & Questions</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li id="authLinks">
+                        <a href="login.html" style="color: #663399; margin-right: 15px;">Login</a>
+                        <a href="register.html" style="background: #663399; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">Register</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h2 class="page-title">Connect with Me</h2>
+                <p class="page-subtitle">Let's start a meaningful conversation</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <!-- Contact Info Cards -->
+                <div class="contact-info-grid">
+                    <div class="contact-info-card">
+                        <div class="info-icon">📧</div>
+                        <h3>Email</h3>
+                        <p>syedamaha087@gmail.com</p>
+                        <span class="info-label">Response within 24-48 hours</span>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="info-icon">💬</div>
+                        <h3>Feedback</h3>
+                        <p>Share your thoughts</p>
+                        <a href="feedback.html" class="info-link">Ask Questions →</a>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="info-icon">📚</div>
+                        <h3>Columns</h3>
+                        <p>Read latest writings</p>
+                        <a href="columns.html" class="info-link">Browse Columns →</a>
+                    </div>
+                </div>
+
+                <div class="form-container">
+                    <div class="form-intro">
+                        <h3 class="form-title">Send a Message</h3>
+                        <p>
+                            I would love to hear from you! Whether you have feedback, questions, suggestions for future columns, 
+                            or simply want to share your thoughts, please don't hesitate to reach out.
+                        </p>
+                    </div>
+
+                    <form class="contact-form" id="contactForm" action="mailto:syedamaha087@gmail.com" method="post" enctype="text/plain">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name <span class="required">*</span></label>
+                                <div class="input-wrapper">
+                                    <span class="input-icon">👤</span>
+                                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Your Email <span class="required">*</span></label>
+                                <div class="input-wrapper">
+                                    <span class="input-icon">📧</span>
+                                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">📝</span>
+                                <input type="text" id="subject" name="subject" placeholder="What is this about?" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Your Message <span class="required">*</span></label>
+                            <textarea id="message" name="message" placeholder="Please share your thoughts, questions, or feedback..." required></textarea>
+                            <div class="char-counter">
+                                <span id="charCount">0</span> / 1000 characters
+                            </div>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">I'd like to receive updates about new columns</label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-icon">✉️</span>
+                        </button>
+                    </form>
+
+                    <div class="closing-note">
+                        <div class="note-icon">🤲</div>
+                        <p>
+                            I will try my best to reply to your messages as soon as possible. JazakAllahu Khair for taking the time to connect!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="contact-faq-section">
+                    <h3 class="section-title">Frequently Asked Questions</h3>
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span class="faq-icon">❓</span>
+                                <strong>How quickly will I get a response?</strong>
+                            </div>
+                            <p class="faq-answer">I typically respond within 24-48 hours. During busy periods, it may take up to 3-4 days.</p>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span class="faq-icon">📝</span>
+                                <strong>Can I suggest column topics?</strong>
+                            </div>
+                            <p class="faq-answer">Absolutely! I welcome topic suggestions and questions that you'd like me to address in future columns.</p>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span class="faq-icon">🤝</span>
+                                <strong>Can I collaborate or contribute?</strong>
+                            </div>
+                            <p class="faq-answer">Yes! If you're interested in contributing or collaborating, please mention it in your message.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- legacy footer removed; site-wide footer injected by js/footer.js -->
+
+    <script src="js/notification-fix.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/features.js"></script>
+    <script defer src="js/theme.js"></script>
+    <script defer src="js/notifications.js"></script>
+    <script>
+        // Enhanced form handling with animations and validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const messageField = document.getElementById('message');
+            const charCount = document.getElementById('charCount');
+            
+            // Character counter
+            if (messageField && charCount) {
+                messageField.addEventListener('input', function() {
+                    const count = this.value.length;
+                    charCount.textContent = count;
+                    
+                    if (count > 1000) {
+                        charCount.style.color = '#d32f2f';
+                    } else if (count > 800) {
+                        charCount.style.color = '#ff9800';
+                    } else {
+                        charCount.style.color = 'var(--muted)';
+                    }
+                });
+            }
+            
+            // Form submission
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    const newsletter = document.getElementById('newsletter').checked;
+                    
+                    // Create formatted email body
+                    const emailBody = `Name: ${name}\nEmail: ${email}\n\nSubject: ${subject}\n\nMessage:\n${message}\n\n${newsletter ? 'Newsletter: Yes, I would like to receive updates' : ''}`;
+                    
+                    // Update the action with formatted content
+                    this.action = `mailto:syedamaha087@gmail.com?subject=${encodeURIComponent(subject + ' - The Awakened Youth')}&body=${encodeURIComponent(emailBody)}`;
+                    
+                    // Show success animation
+                    const btn = this.querySelector('.submit-btn');
+                    btn.innerHTML = '<span class="btn-text">Sending...</span><span class="btn-icon">⏳</span>';
+                });
+            }
+            
+            // Input focus animations
+            const inputs = document.querySelectorAll('.contact-form input, .contact-form textarea');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (!this.value) {
+                        this.parentElement.classList.remove('focused');
+                    }
+                });
+            });
+            
+            // Animate elements on scroll
+            const animateElements = document.querySelectorAll('.contact-info-card, .faq-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            animateElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.5s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+    <script defer src="js/footer.js"></script>
+</body>
+</html>
